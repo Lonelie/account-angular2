@@ -27,11 +27,16 @@ export class Home {
   ];
 
   removeExpensesListAfterFilter = function(category String) {
-    for (i = 0; i < this.expensesList.length; i++) {
-      if (this.expensesList[i].type_of_spending === category) {
-        this.expensesListToShow.splice(i,1);
+    //console.log(category);
+    expensesToSave = [];
+    for (var i = 0; i < this.expensesListToShow.length; i++) {
+      //console.log(this.expensesListToShow[i]);
+      if (this.expensesListToShow[i].type_of_spending != category) {
+        expensesToSave.push(this.expensesListToShow[i]);
       }
     }
+    //console.log(expensesToSave);
+    this.expensesListToShow = expensesToSave;
   }
 
   addToCategoriesSelected(category){
