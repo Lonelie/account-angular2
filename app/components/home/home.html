@@ -1,1 +1,17 @@
 <h2>Account Angular 2</h2>
+
+<div *ng-for="#category of categoriesList">
+    <input type="checkbox" [checked]="category.ckecked" (click)="addToCategoriesSelected(category)"/> <span>{{category.text}}</span>
+</div>
+<br>
+
+<table>
+	<tr *ng-for="#expense of expensesListToShow">
+		<td>{{expense.description}}</td>
+		<td>{{expense.account}}</td>
+		<td>{{expense.type_of_spending}}</td>
+		<td>{{expense.date}}</td>
+		<td>{{expense.amount}}</td>
+	</tr>
+	</tr>
+</table>
