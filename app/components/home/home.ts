@@ -59,8 +59,10 @@ export class Home {
         this.expensesListToShow.push(this.expensesList[i]);
         //console.log(this.expensesListToShow);
         //console.log(this.expensesList[i]);
+      }
     }
   }
+
 }
 
 bootstrap(Home);
