@@ -21,8 +21,8 @@ import {AccountDetails} from 'components/accountDetails/accountDetails';
   directives: [RouterOutlet, RouterLink]
 })
 class App {
-    // amount: Number = 245;
-    // secondAmount Number = 789;
+     amount: Number = 245;
+     secondAmount Number = 789;
 }
 
 
