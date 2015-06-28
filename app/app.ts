@@ -2,16 +2,19 @@
 import {Component, View, bootstrap, defaultPipes, PipeRegistry, bind} from 'angular2/angular2';
 import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
 import {Currency} from 'pipes/currency';
+import {Expenses} from 'services/expenses';
+import {Categories} from 'services/categories';
 
 import {Home} from 'components/home/home';
-import {Check} from 'components/check/check';
+import {AccountDetails} from 'components/accountDetails/accountDetails';
 
 @Component({
-  selector: 'app'
+  selector: 'app',
+  appInjector: [Expenses, Categories]
 })
 @RouteConfig([
   { path: '/', component: Home, as: 'home' },
-  { path: '/check', component: Check, as: 'check' }
+  { path: '/accountDetails', component: AccountDetails, as: 'accountDetails' }
 ])
 @View({
   templateUrl: 'app.html',
