@@ -10,7 +10,6 @@ import {Categories} from '../../services/categories';
   templateUrl: 'components/accountDetails/accountDetails.html',
   directives: [NgFor]
 })
-
 export class AccountDetails {
 
   expensesServices: Expenses;
@@ -20,14 +19,6 @@ export class AccountDetails {
   categoriesServices: Categories;
   categories = [];
   categoriesSelected = [];
-
-  constructor(expensesServices: Expenses, categoriesServices: Categories) {
-    this.expensesServices = expensesServices;
-    this.expenses = this.expensesServices.getExpensesSaved();
-
-    this.categoriesServices = categoriesServices;
-    this.categories = this.categoriesServices.getCategoriesSaved();
-  }
   
   mapFilters = {
     "Flat" : false,
@@ -36,6 +27,14 @@ export class AccountDetails {
     "University" : false,
     "Car" : false,
     "Piano lessions" : false
+  }
+
+  constructor(expensesServices: Expenses, categoriesServices: Categories) {
+    this.expensesServices = expensesServices;
+    this.expenses = this.expensesServices.getExpensesSaved();
+
+    this.categoriesServices = categoriesServices;
+    this.categories = this.categoriesServices.getCategoriesSaved();
   }
 
   removeExpensesListAfterFilter(category){

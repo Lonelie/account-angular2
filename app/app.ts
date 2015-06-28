@@ -4,7 +4,6 @@ import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2
 import {Currency} from 'pipes/currency';
 import {Expenses} from 'services/expenses';
 import {Categories} from 'services/categories';
-
 import {Home} from 'components/home/home';
 import {AccountDetails} from 'components/accountDetails/accountDetails';
 
