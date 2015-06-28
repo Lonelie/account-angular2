@@ -18,8 +18,8 @@ import {Check} from 'components/check/check';
   directives: [RouterOutlet, RouterLink]
 })
 class App {
-    // amount: Number = 245;
-    // secondAmount Number = 789;
+     amount: Number = 245;
+     secondAmount Number = 789;
 }
 
 
