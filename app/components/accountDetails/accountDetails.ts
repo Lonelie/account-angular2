@@ -14,11 +14,11 @@ import {Categories} from '../../services/categories';
 export class AccountDetails {
 
   expensesServices: Expenses;
-  expenses:Array<String> = [];
-  expensesListToShow:Array<String> = [];
+  expenses = [];
+  expensesListToShow = [];
 
   categoriesServices: Categories;
-  categories:Array<String> = [];
+  categories = [];
   categoriesSelected = [];
 
   constructor(expensesServices: Expenses, categoriesServices: Categories) {
@@ -62,7 +62,7 @@ export class AccountDetails {
       this.categoriesSelected.push(category.text);
       this.showExpensesListAfterFilter(category.text);
     } else {
-      this.categoriesSelected.pop(category.text)
+      this.categoriesSelected.pop(category.text);
       this.removeExpensesListAfterFilter(category.text);
     }
     console.log("%o", this.expensesListToShow);
