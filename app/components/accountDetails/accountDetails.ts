@@ -1,10 +1,10 @@
 import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
-import {Expenses} from '../../services/expenses';
+import {ExpensesServices} from '../../services/expensesServices';
 import {Categories} from '../../services/categories';
 
 @Component({
   selector: 'component-2', // can be anything, because we inject the component via <router-outlet>
-  injectables: [Expenses, Categories]
+  injectables: [ExpensesServices, Categories]
 })
 @View({
   templateUrl: 'components/accountDetails/accountDetails.html',
@@ -12,7 +12,7 @@ import {Categories} from '../../services/categories';
 })
 export class AccountDetails {
 
-  expensesServices: Expenses;
+  expensesServices: ExpensesServices;
   expenses = [];
   expensesListToShow = [];
 
@@ -29,9 +29,9 @@ export class AccountDetails {
     "Piano lessions" : false
   }
 
-  constructor(expensesServices: Expenses, categoriesServices: Categories) {
+  constructor(expensesServices: ExpensesServices, categoriesServices: Categories) {
     this.expensesServices = expensesServices;
-    this.expenses = this.expensesServices.getExpensesSaved();
+    this.expenses = this.expensesServices.getExpenses();
 
     this.categoriesServices = categoriesServices;
     this.categories = this.categoriesServices.getCategoriesSaved();
