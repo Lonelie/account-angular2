@@ -1,10 +1,10 @@
-import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
-import {ExpensesServices} from '../../services/expensesServices';
-import {Categories} from '../../services/categories';
+import {Component, View, NgFor} from 'angular2/angular2';
+import {Expense, ExpensesServices} from '../../services/expensesServices';
+import {StorageServices} from '../../services/storageServices';
+import {Category, Categories} from '../../services/categories';
 
 @Component({
-  selector: 'component-2', // can be anything, because we inject the component via <router-outlet>
-  injectables: [ExpensesServices, Categories]
+  injectables: [ExpensesServices, Categories, StorageServices]
 })
 @View({
   templateUrl: 'components/accountDetails/accountDetails.html',
@@ -12,60 +12,48 @@ import {Categories} from '../../services/categories';
 })
 export class AccountDetails {
 
+  //Handle categories
+  categoriesServices: Categories;
+  categories:Array<Categories>;
+  categoriesSelected:Array<Categories> = [];
+  
+  //Handle expenses
+  storageServices: StorageServices;
   expensesServices: ExpensesServices;
   expenses = [];
-  expensesListToShow = [];
+  expensesListToShow:Array<Expense> = [];
 
-  categoriesServices: Categories;
-  categories = [];
-  categoriesSelected = [];
-  
-  mapFilters = {
-    "Flat" : false,
-    "Leisure" : false,
-    "Nutrition" : false,
-    "University" : false,
-    "Car" : false,
-    "Piano lessions" : false
-  }
-
-  constructor(expensesServices: ExpensesServices, categoriesServices: Categories) {
+  constructor(expensesServices: ExpensesServices, categoriesServices: Categories, storageServices: StorageServices) {
     this.expensesServices = expensesServices;
     this.expenses = this.expensesServices.getExpenses();
-
+    this.storageServices = storageServices;
     this.categoriesServices = categoriesServices;
+    this.load();
+
     this.categories = this.categoriesServices.getCategoriesSaved();
   }
 
-  removeExpensesListAfterFilter(category){
-    var expensesToSave:Array<String> = [];
-    for (var i = 0; i < this.expensesListToShow.length; i++) {
-      if (this.expensesListToShow[i].typeOfSpending != category) {
-        expensesToSave.push(this.expensesListToShow[i]);
-      }
-    }
-    this.expensesListToShow = expensesToSave;
+  updateExpenses(category: Category) : Array<Expense> {
+    this.expensesListToShow = this.expensesServices.updateExpensesListToShow(category);
+    return this.expensesListToShow;
   }
 
-  showExpensesListAfterFilter(category){
-    for (var i = 0; i < this.expenses.length; i++) { 
-      if (this.expenses[i].typeOfSpending === category) {
-        this.expensesListToShow.push(this.expenses[i]);
-      }
-    }
+  getExpenses(category: Category) : Array<Expense> {
+    this.expensesListToShow = this.expensesServices.showExpensesListAfterFilter(category);
+    return this.expensesListToShow;
   }
 
-  addToCategoriesSelected(category){
-    category.checked = !category.checked;
-    if (category.checked) {
-      this.categoriesSelected.push(category.text);
-      this.showExpensesListAfterFilter(category.text);
-    } else {
-      //this.categoriesSelected.pop(category.text);
-      this.removeExpensesListAfterFilter(category.text);
-    }
-    console.log("%o", this.expensesListToShow);
+  addToCategoriesSelected(category: Category) : Array<Expense> {
+    this.expensesListToShow = this.expensesServices.addCategories(category);
+    return this.expensesListToShow;
+  }
+
+  load() {
+    this.expensesServices.setExpenses(this.storageServices.loadJson('expenses'));
+    this.expenses = this.expensesServices.getExpenses();
+  }
+
+  save() {
+    this.storageServices.saveJson('expenses', this.expenses);
   }
 }
-
-bootstrap(AccountDetails);
