@@ -4,7 +4,6 @@ import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2
 import {Currency} from 'pipes/currency';
 import {ExpensesServices} from 'services/expensesServices';
 import {Categories} from 'services/categories';
-import {Home} from 'components/home/home';
 import {AccountDetails} from 'components/accountDetails/accountDetails';
 
 @Component({
@@ -12,7 +11,6 @@ import {AccountDetails} from 'components/accountDetails/accountDetails';
   appInjector: [ExpensesServices, Categories]
 })
 @RouteConfig([
-  { path: '/', component: Home, as: 'home' },
   { path: '/accountDetails', component: AccountDetails, as: 'accountDetails' }
 ])
 @View({
