@@ -61,7 +61,7 @@ export class AccountDetails {
       this.categoriesSelected.push(category.text);
       this.showExpensesListAfterFilter(category.text);
     } else {
-      this.categoriesSelected.pop(category.text);
+      //this.categoriesSelected.pop(category.text);
       this.removeExpensesListAfterFilter(category.text);
     }
     console.log("%o", this.expensesListToShow);
