@@ -15,13 +15,13 @@
 				<div class="filter">FILTERS</div>
 				<div *ng-for="#category of categories">
 					<div class="filter">
-				    	<input type="checkbox" [checked]="category.ckecked" (click)="addToCategoriesSelected(category)"/><span >{{category.text}}</span>
+				    	<input type="checkbox" [checked]="category.ckecked" (click)="onCategoryClicked(category)"/><span >{{category.text}}</span>
 				    </div>
 				</div>
 			</div>
 		</div><div id="expenses-list">
 			<div id="expenses">
-				<div class="item" *ng-for="#expense of expensesListToShow">
+				<div class="item" *ng-for="#expense of expensesFilteredList.expensesListToShow">
 					<div class="date">{{expense.date}}</div>
 					<div class="type">{{expense.typeOfSpending}}</div>
 					<div>{{expense.account}}</div>
