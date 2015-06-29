@@ -1,6 +1,6 @@
 <div id="bodyContainer">
 
-<div id="header">
+<div class="header">
 	Account Angular 2
 	<button type="button" class="btn btn-primary">Ajouter</button>
 </div>
@@ -25,7 +25,6 @@
 			<div class="item" *ng-for="#expense of expensesListToShow">
 				<div class="date">{{expense.date}}</div>
 				<div class="type">{{expense.typeOfSpending}}</div>
-				<div class="account">{{expense.account}}</div>
 				<div class="description">{{expense.description}}</div>
 				<div class="amount">{{expense.amount}}</div>
 			</div>
