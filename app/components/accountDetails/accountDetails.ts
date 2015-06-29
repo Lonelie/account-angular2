@@ -14,8 +14,8 @@ export class AccountDetails {
 
   //Handle categories
   categoriesServices: Categories;
-  categories:Array<Categories>;
-  categoriesSelected:Array<Categories> = [];
+  categories:Array<Category> = [];
+  categoriesSelected:Array<Category> = [];
   
   //Handle expenses
   storageServices: StorageServices;
