@@ -12,3 +12,15 @@ export class Categories {
 		];
 	}
 }
+
+export class Category {
+  text: String;
+  checked: boolean;
+  color: String;
+
+  constructor(text: String, checked: boolean, color: String) {
+    this.text = text;
+    this.checked = checked;
+    this.color = color;
+  }
+}

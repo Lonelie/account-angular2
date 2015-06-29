@@ -15,8 +15,8 @@
 		<div id="filters">
 			<div class="filter">FILTERS</div>
 			<div *ng-for="#category of categories">
-				<div class="filter">
-			    	<input type="checkbox" [checked]="category.ckecked" (click)="addToCategoriesSelected(category)"/> <span>{{category.text}}</span>
+				<div [style.border-left]="" class="filter">
+			    	<input type="checkbox" [checked]="category.ckecked" (click)="addToCategoriesSelected(category)"/><span >{{category.text}}</span>
 			    </div>
 			</div>
 		</div>
@@ -24,6 +24,7 @@
 			<div class="item" *ng-for="#expense of expensesListToShow">
 				<div class="date">{{expense.date}}</div>
 				<div class="type">{{expense.typeOfSpending}}</div>
+				<div>{{expense.account}}</div>
 				<div class="description">{{expense.description}}</div>
 				<div class="amount">{{expense.amount}}</div>
 			</div>
