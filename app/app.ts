@@ -2,13 +2,16 @@
 import {Component, View, bootstrap, defaultPipes, PipeRegistry, bind} from 'angular2/angular2';
 import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
 import {Currency} from 'pipes/currency';
-import {ExpensesServices} from 'services/expensesServices';
-import {Categories} from 'services/categories';
+//import {Category} from 'services/category';
+import {Category, Categories} from 'services/categories';
+//import {Expense} from 'services/expense';
+import {Expense, ExpensesServices} from 'services/expensesServices';
+import {StorageServices} from 'services/storageServices';
 import {AccountDetails} from 'components/accountDetails/accountDetails';
 
 @Component({
   selector: 'app',
-  appInjector: [ExpensesServices, Categories]
+  appInjector: [ExpensesServices, Categories, StorageServices]
 })
 @RouteConfig([
   { path: '/accountDetails', component: AccountDetails, as: 'accountDetails' }
@@ -18,15 +21,6 @@ import {AccountDetails} from 'components/accountDetails/accountDetails';
   directives: [RouterOutlet, RouterLink]
 })
 class App {
-  amount: Number = 245;
-  secondAmount Number = 789;
 }
 
-
-export var pipes = Object.assign({}, defaultPipes, {
-  currency: [
-    new Currency()
-  ]
-});
-
-bootstrap(App, [routerInjectables], bind(PipeRegistry).toValue(new PipeRegistry(pipes)));
+bootstrap(App, [routerInjectables]);
