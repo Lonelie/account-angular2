@@ -1,4 +1,3 @@
-import {Expense} from 'services/expensesServices';
 import {Categories, Category} from 'services/categories';
 
 export class ExpensesServices {
@@ -20,16 +19,16 @@ export class ExpensesServices {
       { description: 'mojito', account: 'Master Card', typeOfSpending: 'Flat', date:'09/07/2015', amount:'10 euros'},
       { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
       { description: 'mojito', account: 'Visa', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'},
-      { description: 'mojito', account: 'HSBC', typeOfSpending: 'Piano lessions', date:'09/07/2015', amount:'10 euros'},
-      { description: 'carburant', account: 'Master Card', typeOfSpending: 'Car', date:'09/06/2015', amount:'23 euros'},
-      { description: 'veste en dain', account: 'HSBC', typeOfSpending: 'Leisure', date:'09/07/2015', amount:'200 dollars'},
-      { description: 'mojito', account: 'Master Card', typeOfSpending: 'Flat', date:'09/07/2015', amount:'10 euros'},
       { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
       { description: 'mojito', account: 'Visa', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'},
       { description: 'mojito', account: 'HSBC', typeOfSpending: 'Piano lessions', date:'09/07/2015', amount:'10 euros'},
       { description: 'carburant', account: 'Master Card', typeOfSpending: 'Car', date:'09/06/2015', amount:'23 euros'},
       { description: 'veste en dain', account: 'HSBC', typeOfSpending: 'Leisure', date:'09/07/2015', amount:'200 dollars'},
       { description: 'mojito', account: 'Master Card', typeOfSpending: 'Flat', date:'09/07/2015', amount:'10 euros'},
+      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
+      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
+      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
+      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
       { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
       { description: 'mojito', account: 'Visa', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'}
     ];
@@ -41,15 +40,12 @@ export class ExpensesServices {
 
   addCategories(category: Category) : Array<Expense> {
     category.checked = !category.checked;
-    console.log("checked", category.checked);
     if (category.checked) {
       this.categoriesSelected.push(category);
-      console.log("this.expenses", this.expenses);
       this.expensesListToShow = this.showExpensesListAfterFilter(category);
     } else {
       this.expensesListToShow = this.updateExpensesListToShow(category);
     }
-    console.log("categoriesSelected", this.categoriesSelected);
     console.log("this.expensesListToShow", this.expensesListToShow);
     return this.expensesListToShow;
   }
