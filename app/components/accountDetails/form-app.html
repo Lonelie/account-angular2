@@ -1,0 +1,9 @@
+<button (click)="toggle()" type="button" class="btn btn-primary">Ajouter</button>
+
+<form [hidden]="!visible" [ng-form-model]='appForm' [class.invalid]='!appForm.valid'>
+	<p [class.has-success]='appForm.controls.description.valid'>Description : <input type='text' ng-control='description'></p>
+	<p [class.has-success]='appForm.controls.typeOfSpending.valid'>Type : <input type='text' ng-control='typeOfSpending'></p>
+	<p [class.has-success]='appForm.controls.date.valid'>Date : <input type='date' ng-control='date'></p>
+	<p [class.has-success]='appForm.controls.amount.valid'>Montant : <input type='number' ng-control='amount'></p>
+	<button (click)='onSubmit($event)'>Login</button>
+</form>

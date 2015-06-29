@@ -2,10 +2,12 @@
 
 <div class="header">
 	Account Angular 2
-	<button type="button" class="btn btn-primary">Ajouter</button>
+	<button (click)="toggle()" type="button" class="btn btn-primary">Ajouter</button>
 </div>
 
 <div id="container">
+	
+	<form-app></form-app>
 
 	<div id="container-left">
 		<div class="item">Income</div>
@@ -29,6 +31,7 @@
 				<div class="amount">{{expense.amount}}</div>
 			</div>
 		</div>
+
 	</div>
 
 </div>
