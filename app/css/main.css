@@ -1,3 +1,39 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(font/material-design-icons/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(font/material-design-icons/MaterialIcons-Regular.woff2) format('woff2'),
+       url(font/material-design-icons/MaterialIcons-Regular.woff) format('woff'),
+       url(font/material-design-icons/MaterialIcons-Regular.ttf) format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -14,13 +50,12 @@ body {
 }
 
 #container{
-	//width: 100%;
-	//height: 100%;
+	height: 100%;
 	position: absolute;
 	left: 0px;
 	top:60px;
 	right: 0px;
-	bottom:0px;
+	bottom: 0px;
 }
 
 #container-left{
@@ -31,20 +66,25 @@ body {
 	display:inline-block;
 	vertical-align:top;
 	width: 20%;
-	background-color:#CACACA;
+	background-color:#fff;
 	padding-right: 10px;
-	padding-left: 10px;
 	height: 100%;
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
 
 #container-left .item{
-	border-top: 1px solid #C6C6C6;
 	border-bottom: 1px solid #A6A6A6;
 	padding:20px;
 }
-
+.item-main {
+	border-left: 1px solid #C13A36;
+	border-width:5px;
+	padding:20px;
+	color: #C13A36;
+	font-weight:bold;
+	border-bottom: 1px solid #A6A6A6;
+}
 #container-right{
 	position:absolute;
 	top:0px;
@@ -66,15 +106,17 @@ body {
 	padding: 5px;
 	width: 100%;
 }
+.filters {
+	font-weight:700;
+	text-decoration:underline;
+}
 
 .filter{
 	padding:13px;
 	border-bottom: 1px solid #D5D5D5;
+	font-weight:bold;
 }
 
-.filter:hover{
-	background-color: #D8D8D8;
-}
 
 #expenses-list{
 	position:absolute;
@@ -107,11 +149,13 @@ body {
 #expenses-list .item div{
 	display:inline-block;
 	vertical-align:top;
+	padding: 10px;
+	width:70px;
 }
 
 #expenses-list .item .date{
 	font-size: 14px;
-	color: #909099;
+	color: #35588B;
 }
 
 #expenses-list .item .account{
@@ -138,7 +182,7 @@ body {
 	right:0px;
 	height: 60px;
 	color: #fff;
-	background-color: #F44336;
+	background-color: #63A0A5;
 	font-size: 16px;
 	font-weight: bold;
 }
@@ -160,8 +204,4 @@ body {
 	text-align: center;
 	border-radius: 50%;
 	background-color: #F44336;
-}
-
-.filter{
-	//border-left: 2px solid #00BCD4;
 }

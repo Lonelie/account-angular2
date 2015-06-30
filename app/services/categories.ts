@@ -2,13 +2,11 @@ export class Categories {
 
 	getCategoriesSaved() {
 		return [
-			{text:"All Categories", checked:false, color:"blue"},
-			{text:"Flat", checked:false, color:"blue"},
-			{text:"Leisure", checked:false, color:"green"},
-			{text:"Nutrition", checked:false, color:"pink"},
-			{text:"University", checked:false, color:"blue"},
-			{text:"Car", checked:false, color:"orange"}, 
-			{text:"Piano lessions",checked:false, color:"violet"}
+			{text:"All Categories", checked:false, background:"5px solid #009688"},
+			{text:"Flat", checked:false, background:"5px solid #00BCD4"},
+			{text:"Leisure", checked:false, background:"5px solid #448AFF"},
+			{text:"Car", checked:false, background:"5px solid #3F51B5"}, 
+			{text:"Gifts",checked:false, background:"5px solid #7C4DFF"}
 		];
 	}
 }
