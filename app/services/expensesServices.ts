@@ -13,23 +13,23 @@ export class ExpensesServices {
 
   getExpenses() {
     return this.expenses = [
+      { description: 'Parfum', account: 'Livret A', typeOfSpending: 'Gifts', date:'09/06/2015', amount:'23 euros'},
+      { description: 'Ordinateur', account: 'Compte courant', typeOfSpending: 'Flat', date:'09/07/2015', amount:'200 dollars'},
+      { description: 'Vaste', account: 'Livret A', typeOfSpending: 'Flat', date:'12/03/2015', amount:'10 euros'},
+      { description: 'Troninette', account: 'Compte courant', typeOfSpending: 'Gifts', date:'09/07', amount:'10 euros'},
+      { description: 'Essuie glasse', account: 'Visa', typeOfSpending: 'Car', date:'09/07/2015', amount:'5 euros'},
+      { description: 'Tenue mariage', account: 'Compte courant', typeOfSpending: 'Leisure', date:'01/12/2015', amount:'10 euros'},
+      { description: 'Tapis', account: 'Livret Jeune', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'},
+      { description: 'Veste', account: 'Compte courant', typeOfSpending: 'Leisure', date:'09/07/2015', amount:'10 euros'},
       { description: 'carburant', account: 'Master Card', typeOfSpending: 'Car', date:'09/06/2015', amount:'23 euros'},
-      { description: 'veste en dain', account: 'HSBC', typeOfSpending: 'Leisure', date:'09/07/2015', amount:'200 dollars'},
-      { description: 'mojito', account: 'Master Card', typeOfSpending: 'Flat', date:'09/07/2015', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'},
-      { description: 'mojito', account: 'HSBC', typeOfSpending: 'Piano lessions', date:'09/07/2015', amount:'10 euros'},
-      { description: 'carburant', account: 'Master Card', typeOfSpending: 'Car', date:'09/06/2015', amount:'23 euros'},
-      { description: 'veste en dain', account: 'HSBC', typeOfSpending: 'Leisure', date:'09/07/2015', amount:'200 dollars'},
-      { description: 'mojito', account: 'Master Card', typeOfSpending: 'Flat', date:'09/07/2015', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Leisure', date:'09/07', amount:'10 euros'},
-      { description: 'mojito', account: 'Visa', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'}
+      { description: 'Veste en dain', account: 'HSBC', typeOfSpending: 'Leisure', date:'09/07/2015', amount:'200 dollars'},
+      { description: 'Cocktails', account: 'Master Card', typeOfSpending: 'Flat', date:'09/07/2015', amount:'10 euros'},
+      { description: 'Epilation', account: 'Compte courant', typeOfSpending: 'Leisure', date:'10/04/2015', amount:'10 euros'},
+      { description: 'Mojito', account: 'Compte courant', typeOfSpending: 'Leisure', date:'09/01/2015', amount:'10 euros'},
+      { description: 'Coussin', account: 'Compte courant', typeOfSpending: 'Flat', date:'19/03/2015', amount:'5 euros'},
+      { description: 'Montre Chaumet', account: 'Livret Jeune', typeOfSpending: 'Gifts', date:'20/02/2015', amount:'6 euros'},
+      { description: 'mojito', account: 'Livret Jeune', typeOfSpending: 'Leisure', date:'17/06/2015', amount:'12 euros'},
+      { description: 'mojito', account: 'Livret A', typeOfSpending: 'Flat', date:'09/07/2015', amount:'5 euros'}
     ];
   }
 
