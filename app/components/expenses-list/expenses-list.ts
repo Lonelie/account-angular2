@@ -1,10 +1,11 @@
-import {Component, View, bootstrap, NgFor, NgSwitch} from 'angular2/angular2';
+import {Component, View, bootstrap, NgFor, NgSwitch, Parent} from 'angular2/angular2';
 import {Expense, ExpensesServices} from 'services/expensesServices';
 import {StorageServices} from 'services/storageServices';
 import {Category, Categories} from 'services/categories';
-
-
+import {FormApp} from './form-app';
 import {ExpensesFilteredList} from 'components/expenses-list/expensesFilteredList';
+
+console.log(FormApp);
 
 @Component({
   selector: 'expenses-list',
@@ -13,9 +14,15 @@ import {ExpensesFilteredList} from 'components/expenses-list/expensesFilteredLis
 })
 @View({
   templateUrl: 'components/expenses-list/expenses-list.html',
-  directives: [NgFor, NgSwitch]
+  directives: [NgFor, NgSwitch, FormApp]
 })
 export class ExpensesList {
+
+  formApp: FormApp;
+  
+  toggle(){
+    this.formApp.toggle();
+  }
 
   expensesFilteredList:ExpensesFilteredList;
 
