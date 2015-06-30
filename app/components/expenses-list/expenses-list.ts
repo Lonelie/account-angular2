@@ -1,4 +1,4 @@
-import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
+import {Component, View, bootstrap, NgFor, NgSwitch} from 'angular2/angular2';
 import {Expense, ExpensesServices} from 'services/expensesServices';
 import {StorageServices} from 'services/storageServices';
 import {Category, Categories} from 'services/categories';
@@ -13,7 +13,7 @@ import {ExpensesFilteredList} from 'components/expenses-list/expensesFilteredLis
 })
 @View({
   templateUrl: 'components/expenses-list/expenses-list.html',
-  directives: [NgFor]
+  directives: [NgFor, NgSwitch]
 })
 export class ExpensesList {
 
