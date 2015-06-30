@@ -5,6 +5,17 @@ body {
     font-size: 15px;
 }
 
+#containerForm{
+	padding:0px 50px;
+}
+
+#blocForm{
+	z-index:12; 
+	background-color:green; 
+	position:relative; 
+	width: 50%;
+}
+
 #header{
 	background-color:#33B6E5;
 	margin:0px;
@@ -134,4 +145,8 @@ body {
 	text-align: center;
 	border-radius: 50%;
 	background-color: #F44336;
+}
+
+.filter{
+	//border-left: 2px solid #00BCD4;
 }

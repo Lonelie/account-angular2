@@ -1,6 +1,4 @@
-/// <reference path="../typings/tsd.d.ts" />
-import {Component, View, bootstrap, formDirectives, ControlGroup, Control, Validators} from 'angular2/angular2';
-import {CustomValidators} from 'validators/loginValidators';
+import {Component, View, formDirectives, ControlGroup, Control, Validators, Parent} from 'angular2/angular2';
 import {ExpensesServices} from '../../services/expensesServices';
 
 @Component({
@@ -9,24 +7,29 @@ import {ExpensesServices} from '../../services/expensesServices';
 
 @View({
   directives: [formDirectives],
-  templateUrl: 'form-app.html';
+  templateUrl: 'components/accountDetails/form-app.html'
 })
 
 export class FormApp {
   expensesServices: ExpensesServices;
   appForm: ControlGroup;
+  visible: boolean;
 
   constructor(@Parent() expensesServices: ExpensesServices) {
 
-    this.expensesServices = ExpensesServices;
+    this.expensesServices = expensesServices;
 
-    this.appForm = new ControlGroup({
-      description: new Control("", Validators.required),
-      typeOfSpending: new Control("", Validators.required),
-      date: new Control("", Validators.required),
-      amount: new Control("", Validators.required)
-    });
+   // this.appForm = new ControlGroup({
+   //   description: new Control("", Validators.required),
+   //   typeOfSpending: new Control("", Validators.required),
+   //   date: new Control("", Validators.required),
+   //   amount: new Control("", Validators.required)
+   // });
     
+  }
+
+  labbel(){
+    return true;
   }
 
   onSubmit(e) {
@@ -54,5 +57,3 @@ export class FormApp {
   }
 
 }
-
-bootstrap(FormApp);

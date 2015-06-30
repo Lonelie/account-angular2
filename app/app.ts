@@ -1,32 +1,70 @@
 /// <reference path="../typings/tsd.d.ts" />
-import {Component, View, bootstrap, defaultPipes, PipeRegistry, bind} from 'angular2/angular2';
-import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
-import {Currency} from 'pipes/currency';
-import {ExpensesServices} from 'services/expensesServices';
-import {Categories} from 'services/categories';
-import {AccountDetails} from 'components/accountDetails/accountDetails';
+import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
+import {Expense, ExpensesServices} from 'services/expensesServices';
+import {StorageServices} from 'services/storageServices';
+import {Category, Categories} from 'services/categories';
+import {FormApp} from 'components/accountDetails/form-app';
 
 @Component({
   selector: 'app',
-  appInjector: [ExpensesServices, Categories]
+  appInjector: [ExpensesServices, Categories, StorageServices]
+  //injectables: [ExpensesServices, Categories, StorageServices]
 })
-@RouteConfig([
-  { path: '/accountDetails', component: AccountDetails, as: 'accountDetails' }
-])
 @View({
   templateUrl: 'app.html',
-  directives: [RouterOutlet, RouterLink]
+  directives: [NgFor, FormApp]
 })
 class App {
-  amount: Number = 245;
-  secondAmount Number = 789;
+  formApp: FormApp;
+
+  toggle(){
+    this.formApp.toggle();
+  }
+
+  //Handle categories
+  categoriesServices: Categories;
+  categories:Array<Category> = [];
+  categoriesSelected:Array<Category> = [];
+  
+  //Handle expenses
+  storageServices: StorageServices;
+  expensesServices: ExpensesServices;
+  expenses = [];
+  expensesListToShow:Array<Expense> = [];
+
+  constructor(expensesServices: ExpensesServices, categoriesServices: Categories, storageServices: StorageServices) {
+    this.expensesServices = expensesServices;
+    this.expenses = this.expensesServices.getExpenses();
+    this.storageServices = storageServices;
+    this.categoriesServices = categoriesServices;
+    this.load();
+
+    this.categories = this.categoriesServices.getCategoriesSaved();
+  }
+
+  updateExpenses(category: Category) : Array<Expense> {
+    this.expensesListToShow = this.expensesServices.updateExpensesListToShow(category);
+    return this.expensesListToShow;
+  }
+
+  getExpenses(category: Category) : Array<Expense> {
+    this.expensesListToShow = this.expensesServices.showExpensesListAfterFilter(category);
+    return this.expensesListToShow;
+  }
+
+  addToCategoriesSelected(category: Category) : Array<Expense> {
+    this.expensesListToShow = this.expensesServices.addCategories(category);
+    return this.expensesListToShow;
+  }
+
+  load() {
+    this.expensesServices.setExpenses(this.storageServices.loadJson('expenses'));
+    this.expenses = this.expensesServices.getExpenses();
+  }
+
+  save() {
+    this.storageServices.saveJson('expenses', this.expenses);
+  }
 }
 
-
-export var pipes = Object.assign({}, defaultPipes, {
-  currency: [
-    new Currency()
-  ]
-});
-
-bootstrap(App, [routerInjectables], bind(PipeRegistry).toValue(new PipeRegistry(pipes)));
+bootstrap(App);

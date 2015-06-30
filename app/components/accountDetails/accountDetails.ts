@@ -1,6 +1,10 @@
 import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
 import {ExpensesServices} from '../../services/expensesServices';
 import {Categories} from '../../services/categories';
+import {FormApp} from './form-app';
+
+console.log(ExpensesServices);
+console.log(FormApp);
 
 @Component({
   selector: 'component-2', // can be anything, because we inject the component via <router-outlet>
@@ -8,10 +12,11 @@ import {Categories} from '../../services/categories';
 })
 @View({
   templateUrl: 'components/accountDetails/accountDetails.html',
-  directives: [NgFor]
+  directives: [NgFor, FormApp]
 })
 export class AccountDetails {
-
+  formApp: FormApp;
+  visible: boolean;
   expensesServices: ExpensesServices;
   expenses = [];
   expensesListToShow = [];
@@ -55,6 +60,12 @@ export class AccountDetails {
     }
   }
 
+  toggle(){
+    this.formApp.toggle(); 
+
+    // = .visible = !this.visible;
+  }
+
   addToCategoriesSelected(category){
     category.checked = !category.checked;
     if (category.checked) {
@@ -67,5 +78,3 @@ export class AccountDetails {
     console.log("%o", this.expensesListToShow);
   }
 }
-
-bootstrap(AccountDetails);
