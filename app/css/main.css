@@ -85,13 +85,18 @@ body {
 	vertical-align:top;
 	background-color:#E7E7E7;
 	width: 60%;
-	overflow-y: auto;
-	overflow-x: hidden;
 }
 
 #expenses{
-	margin:10px;
+	position: absolute;
+	left: 20px;
+	top:20px;
+	right: 20px;
+	bottom:20px;
 	background-color: white;
+	border: 1px inset white;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #expenses-list .item{
