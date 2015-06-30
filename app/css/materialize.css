@@ -8141,7 +8141,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 /* HOME */
 h2 {
   margin: 0 !important;
-  font-size: 20px;
+  font-size: 25px !important;
+  line-height: 60px !important;
 }
 #container-left, #container-right {
   top: 12px;
