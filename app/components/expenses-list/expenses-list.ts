@@ -17,7 +17,7 @@ import {ExpensesFilteredList} from 'components/expenses-list/expensesFilteredLis
 })
 export class ExpensesList {
 
-  expensesFilteredList:Array<ExpensesFilteredList>;
+  expensesFilteredList:ExpensesFilteredList;
   //Handle categories
   categoriesServices: Categories;
   categories:Array<Category> = [];
