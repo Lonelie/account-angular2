@@ -4,6 +4,7 @@ import {Expense, ExpensesServices} from 'services/expensesServices';
 import {StorageServices} from 'services/storageServices';
 import {Category, Categories} from 'services/categories';
 import {FormApp} from 'components/accountDetails/form-app';
+import {ExpensesList} from 'components/expenses-list/expenses-list';
 
 @Component({
   selector: 'app',
@@ -12,7 +13,7 @@ import {FormApp} from 'components/accountDetails/form-app';
 })
 @View({
   templateUrl: 'app.html',
-  directives: [NgFor, FormApp]
+  directives: [NgFor, ExpensesList, FormApp]
 })
 class App {
   formApp: FormApp;
@@ -21,50 +22,6 @@ class App {
     this.formApp.toggle();
   }
 
-  //Handle categories
-  categoriesServices: Categories;
-  categories:Array<Category> = [];
-  categoriesSelected:Array<Category> = [];
-  
-  //Handle expenses
-  storageServices: StorageServices;
-  expensesServices: ExpensesServices;
-  expenses = [];
-  expensesListToShow:Array<Expense> = [];
-
-  constructor(expensesServices: ExpensesServices, categoriesServices: Categories, storageServices: StorageServices) {
-    this.expensesServices = expensesServices;
-    this.expenses = this.expensesServices.getExpenses();
-    this.storageServices = storageServices;
-    this.categoriesServices = categoriesServices;
-    this.load();
-
-    this.categories = this.categoriesServices.getCategoriesSaved();
-  }
-
-  updateExpenses(category: Category) : Array<Expense> {
-    this.expensesListToShow = this.expensesServices.updateExpensesListToShow(category);
-    return this.expensesListToShow;
-  }
-
-  getExpenses(category: Category) : Array<Expense> {
-    this.expensesListToShow = this.expensesServices.showExpensesListAfterFilter(category);
-    return this.expensesListToShow;
-  }
-
-  addToCategoriesSelected(category: Category) : Array<Expense> {
-    this.expensesListToShow = this.expensesServices.addCategories(category);
-    return this.expensesListToShow;
-  }
-
-  load() {
-    this.expensesServices.setExpenses(this.storageServices.loadJson('expenses'));
-    this.expenses = this.expensesServices.getExpenses();
-  }
-
-  save() {
-    this.storageServices.saveJson('expenses', this.expenses);
-  }
 }
 
 bootstrap(App);
