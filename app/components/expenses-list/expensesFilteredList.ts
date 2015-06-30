@@ -10,19 +10,19 @@ export class ExpensesFilteredList {
 		this.expenses = expenses;
 	}
 
-  addCategories(category: Category) : Array<Expense> {
+  refreshExpensesList(category: Category) : Array<Expense> {
     category.checked = !category.checked;
     if (category.checked) {
       this.categoriesSelected.push(category);
       this.expensesListToShow = this.showExpensesListAfterFilter(category);
     } else {
-      this.expensesListToShow = this.updateExpensesListToShow(category);
+      this.expensesListToShow = this.refreshCategoriesListSelected(category);
     }
     console.log("this.expensesListToShow", this.expensesListToShow);
     return this.expensesListToShow;
   }
 
-  updateExpensesListToShow(category: Category) : Array<Expense> {
+  refreshCategoriesListSelected(category: Category) : Array<Expense> {
     var expensesToSave:Array<Expense> = [];
     for (var i = 0; i < this.expensesListToShow.length; i++) {
       if (this.expensesListToShow[i].typeOfSpending != category.text) {

@@ -18,6 +18,7 @@ import {ExpensesFilteredList} from 'components/expenses-list/expensesFilteredLis
 export class ExpensesList {
 
   expensesFilteredList:ExpensesFilteredList;
+
   //Handle categories
   categoriesServices: Categories;
   categories:Array<Category> = [];
@@ -25,7 +26,6 @@ export class ExpensesList {
   //Handle expenses
   storageServices: StorageServices;
   expensesServices: ExpensesServices;
-
 
   constructor(expensesServices: ExpensesServices, categoriesServices: Categories, storageServices: StorageServices) {
     this.expensesServices = expensesServices;
@@ -38,7 +38,7 @@ export class ExpensesList {
   }
 
   onCategoryClicked(category: Category) : Array<Expense> {
-    var expensesListToShow = this.expensesFilteredList.addCategories(category);
+    var expensesListToShow = this.expensesFilteredList.refreshExpensesList(category);
     return expensesListToShow;
   }
 
